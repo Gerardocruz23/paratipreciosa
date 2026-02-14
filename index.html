@@ -27,16 +27,16 @@ body {
 /* ===================== */
 #luna {
     position: fixed;
-    top: 40px;
-    right: 50px;
-    width: 80px;
-    height: 80px;
-    background: radial-gradient(circle at 35% 35%, #fffbe6, #f5c842 40%, #d4a017 100%);
+    top: 30px;
+    right: 40px;
+    width: 55px;
+    height: 55px;
+    background: radial-gradient(circle at 35% 35%, #ffffff, #ffe680 30%, #f5c842 60%, #c49a00 100%);
     border-radius: 50%;
     box-shadow:
-        0 0 20px 8px rgba(245, 200, 66, 0.4),
-        0 0 60px 20px rgba(245, 200, 66, 0.2),
-        0 0 100px 40px rgba(245, 200, 66, 0.1);
+        0 0 15px 5px rgba(245, 200, 66, 0.5),
+        0 0 40px 15px rgba(245, 200, 66, 0.25),
+        0 0 80px 30px rgba(245, 200, 66, 0.1);
     animation: lunaGlow 4s ease-in-out infinite;
     z-index: 5;
 }
@@ -66,15 +66,15 @@ body {
 @keyframes lunaGlow {
     0%, 100% {
         box-shadow:
-            0 0 20px 8px rgba(245, 200, 66, 0.4),
-            0 0 60px 20px rgba(245, 200, 66, 0.2),
-            0 0 100px 40px rgba(245, 200, 66, 0.1);
+            0 0 15px 5px rgba(245, 200, 66, 0.5),
+            0 0 40px 15px rgba(245, 200, 66, 0.25),
+            0 0 80px 30px rgba(245, 200, 66, 0.1);
     }
     50% {
         box-shadow:
-            0 0 30px 12px rgba(245, 200, 66, 0.6),
-            0 0 80px 30px rgba(245, 200, 66, 0.3),
-            0 0 140px 60px rgba(245, 200, 66, 0.15);
+            0 0 20px 8px rgba(245, 200, 66, 0.7),
+            0 0 55px 20px rgba(245, 200, 66, 0.35),
+            0 0 110px 45px rgba(245, 200, 66, 0.15);
     }
 }
 
@@ -169,11 +169,13 @@ body {
 
 #caja-password h2 {
     font-size: 22px;
-    background: linear-gradient(135deg, #f5c842, #fffbe6, #f5c842);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #ffe680;
+    text-shadow:
+        0 0 10px rgba(255, 230, 128, 0.9),
+        0 0 25px rgba(245, 200, 66, 0.7),
+        0 0 50px rgba(245, 200, 66, 0.4);
     margin-bottom: 8px;
+    animation: titleShine 3s ease-in-out infinite;
 }
 
 #caja-password p {
@@ -400,22 +402,31 @@ body {
 h1 {
     font-size: 24px;
     text-align: center;
-    background: linear-gradient(135deg, #f5c842, #fffbe6, #f5c842);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #ffe680;
+    text-shadow:
+        0 0 10px rgba(255, 230, 128, 0.9),
+        0 0 25px rgba(245, 200, 66, 0.7),
+        0 0 50px rgba(245, 200, 66, 0.4);
     margin-bottom: 20px;
     animation: titleShine 3s ease-in-out infinite;
     position: relative;
     padding-right: 35px;
 }
 
-@media (min-width: 768px) { h1 { font-size: 28px; } }
-@media (min-width: 1024px) { h1 { font-size: 32px; } }
-
 @keyframes titleShine {
-    0%, 100% { filter: brightness(1); }
-    50% { filter: brightness(1.4); }
+    0%, 100% {
+        text-shadow:
+            0 0 10px rgba(255, 230, 128, 0.9),
+            0 0 25px rgba(245, 200, 66, 0.7),
+            0 0 50px rgba(245, 200, 66, 0.4);
+    }
+    50% {
+        text-shadow:
+            0 0 15px rgba(255, 255, 200, 1),
+            0 0 35px rgba(245, 200, 66, 0.9),
+            0 0 70px rgba(245, 200, 66, 0.6),
+            0 0 100px rgba(245, 200, 66, 0.3);
+    }
 }
 
 h1::after { content: "✨"; position: absolute; right: 0; top: 0; }
