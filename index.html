@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Mi Preciosa♥</title>
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(ellipse at 20% 50%, #0d1b3e 0%, #050508 40%, #000000 100%);
+    font-family: 'Georgia', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ===================== */
+/*        LUNA           */
+/* ===================== */
+#luna {
+    position: fixed;
+    top: 40px;
+    right: 50px;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle at 35% 35%, #fffbe6, #f5c842 40%, #d4a017 100%);
+    border-radius: 50%;
+    box-shadow:
+        0 0 20px 8px rgba(245, 200, 66, 0.4),
+        0 0 60px 20px rgba(245, 200, 66, 0.2),
+        0 0 100px 40px rgba(245, 200, 66, 0.1);
+    animation: lunaGlow 4s ease-in-out infinite;
+    z-index: 5;
+}
+
+#luna::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    width: 18px;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+}
+
+#luna::after {
+    content: "";
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+@keyframes lunaGlow {
+    0%, 100% {
+        box-shadow:
+            0 0 20px 8px rgba(245, 200, 66, 0.4),
+            0 0 60px 20px rgba(245, 200, 66, 0.2),
+            0 0 100px 40px rgba(245, 200, 66, 0.1);
+    }
+    50% {
+        box-shadow:
+            0 0 30px 12px rgba(245, 200, 66, 0.6),
+            0 0 80px 30px rgba(245, 200, 66, 0.3),
+            0 0 140px 60px rgba(245, 200, 66, 0.15);
+    }
+}
+
+/* ===================== */
+/*      ESTRELLAS        */
+/* ===================== */
+.estrella {
+    position: fixed;
+    background: white;
+    border-radius: 50%;
+    animation: parpadear var(--dur) ease-in-out infinite;
+    z-index: 2;
+}
+
+@keyframes parpadear {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
+}
+
+/* ===================== */
+/*    ESTRELLAS FUGACES  */
+/* ===================== */
+.fugaz {
+    position: fixed;
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, white, rgba(255,255,255,0));
+    border-radius: 50%;
+    animation: caerFugaz var(--fdur) linear forwards;
+    z-index: 3;
+    opacity: 0;
+}
+
+@keyframes caerFugaz {
+    0% {
+        transform: translateX(0) translateY(0) rotate(-35deg);
+        opacity: 0;
+    }
+    5% { opacity: 1; }
+    70% { opacity: 1; }
+    100% {
+        transform: translateX(-600px) translateY(400px) rotate(-35deg);
+        opacity: 0;
+    }
+}
+
+/* ===================== */
+/*  NEBULOSA DE FONDO    */
+/* ===================== */
+.nebulosa {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.08;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ===================== */
+/* PANTALLA CONTRASEÑA   */
+/* ===================== */
+#pantalla-password {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#caja-password {
+    background: linear-gradient(to bottom, rgba(15, 10, 40, 0.95), rgba(5, 5, 20, 0.98));
+    padding: 40px 30px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6),
+                0 0 40px rgba(245, 200, 66, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(245, 200, 66, 0.3);
+    width: 90%;
+    max-width: 320px;
+    animation: aparecer 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    z-index: 10000;
+}
+
+#candado {
+    font-size: 60px;
+    margin-bottom: 15px;
+    animation: bounce 1.5s ease-in-out infinite;
+}
+
+#caja-password h2 {
+    font-size: 22px;
+    background: linear-gradient(135deg, #f5c842, #fffbe6, #f5c842);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+}
+
+#caja-password p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+#input-password {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid rgba(245, 200, 66, 0.4);
+    border-radius: 25px;
+    font-size: 18px;
+    text-align: center;
+    outline: none;
+    background: rgba(255, 255, 255, 0.05);
+    color: #f5c842;
+    letter-spacing: 6px;
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+}
+
+#input-password:focus {
+    border-color: #f5c842;
+    box-shadow: 0 0 20px rgba(245, 200, 66, 0.3);
+    transform: scale(1.02);
+}
+
+#input-password::placeholder { color: rgba(245, 200, 66, 0.3); letter-spacing: 3px; }
+
+#mensaje-error {
+    font-size: 13px;
+    color: #ff6b6b;
+    min-height: 20px;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+#caja-password button {
+    background: linear-gradient(135deg, #d4a017, #f5c842);
+    border: none;
+    color: #0a0a0a;
+    padding: 12px 35px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(245, 200, 66, 0.3);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    width: 100%;
+    margin-top: 5px;
+}
+
+#caja-password button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(245, 200, 66, 0.5);
+}
+
+#caja-password button:active { transform: translateY(-1px); }
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-8px); }
+    80% { transform: translateX(8px); }
+}
+
+.shake { animation: shake 0.5s ease !important; }
+
+@keyframes desaparecer {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1.1); pointer-events: none; }
+}
+
+@keyframes aparecer {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* ===================== */
+/*        SOBRE          */
+/* ===================== */
+#sobre {
+    width: 240px;
+    height: 160px;
+    background: linear-gradient(145deg, #8b0000, #c0392b);
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 20px 60px rgba(192, 57, 43, 0.5),
+                0 0 30px rgba(192, 57, 43, 0.2),
+                inset 0 -2px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation: pulseCentrado 2s ease-in-out infinite;
+    z-index: 10;
+}
+
+@keyframes pulseCentrado {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.05); }
+}
+
+#sobre:hover {
+    transform: translate(-50%, -50%) scale(1.1) rotate(2deg);
+    box-shadow: 0 25px 70px rgba(192, 57, 43, 0.7),
+                0 0 50px rgba(245, 200, 66, 0.15),
+                inset 0 -2px 10px rgba(0, 0, 0, 0.3);
+}
+
+#sobre::before {
+    content: "";
+    position: absolute;
+    top: -80px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 120px solid transparent;
+    border-right: 120px solid transparent;
+    border-bottom: 80px solid #c0392b;
+    filter: drop-shadow(0 -5px 15px rgba(192, 57, 43, 0.4));
+}
+
+#sobre::after {
+    content: "💌";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    animation: bounce 1.5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+    50% { transform: translate(-50%, -50%) translateY(-10px); }
+}
+
+#texto-sobre {
+    position: absolute;
+    bottom: -50px;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(245, 200, 66, 0.5);
+    animation: textGlow 2s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+    0%, 100% { text-shadow: 0 0 10px rgba(245, 200, 66, 0.3); color: rgba(255,255,255,0.7); }
+    50% { text-shadow: 0 0 20px rgba(245, 200, 66, 0.8), 0 0 40px rgba(245, 200, 66, 0.4); color: #fffbe6; }
+}
+
+@media (min-width: 768px) {
+    #sobre { width: 280px; height: 180px; }
+    #sobre::before {
+        top: -90px !important;
+        border-left: 140px solid transparent !important;
+        border-right: 140px solid transparent !important;
+        border-bottom: 90px solid #c0392b !important;
+    }
+    #sobre::after { font-size: 60px !important; }
+    #texto-sobre { font-size: 18px; bottom: -60px; }
+}
+
+@media (min-width: 1024px) {
+    #sobre { width: 320px; height: 210px; }
+    #sobre::before {
+        top: -105px !important;
+        border-left: 160px solid transparent !important;
+        border-right: 160px solid transparent !important;
+        border-bottom: 105px solid #c0392b !important;
+    }
+    #sobre::after { font-size: 70px !important; }
+    #texto-sobre { font-size: 20px; bottom: -65px; }
+}
+
+/* ===================== */
+/*        CARTA          */
+/* ===================== */
+#carta {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 340px;
+    max-height: 85vh;
+    background: linear-gradient(to bottom, rgba(15, 10, 40, 0.97), rgba(5, 5, 20, 0.99));
+    border-radius: 20px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8),
+                0 0 40px rgba(245, 200, 66, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    display: none;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid rgba(245, 200, 66, 0.25);
+    z-index: 100;
+}
+
+@media (min-width: 768px) { #carta { max-width: 500px; padding: 40px; max-height: 75vh; } }
+@media (min-width: 1024px) { #carta { max-width: 600px; padding: 50px; } }
+
+@keyframes abrirCarta {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3) rotateY(90deg); }
+    60% { transform: translate(-50%, -50%) scale(1.05) rotateY(-5deg); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotateY(0deg); }
+}
+
+.carta-animada { animation: abrirCarta 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards; }
+
+/* ===================== */
+/*       TTULO          */
+/* ===================== */
+h1 {
+    font-size: 24px;
+    text-align: center;
+    background: linear-gradient(135deg, #f5c842, #fffbe6, #f5c842);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    animation: titleShine 3s ease-in-out infinite;
+    position: relative;
+    padding-right: 35px;
+}
+
+@media (min-width: 768px) { h1 { font-size: 28px; } }
+@media (min-width: 1024px) { h1 { font-size: 32px; } }
+
+@keyframes titleShine {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.4); }
+}
+
+h1::after { content: "✨"; position: absolute; right: 0; top: 0; }
+
+/* ===================== */
+/*     DESTINATARIO      */
+/* ===================== */
+.destinatario {
+    text-align: center;
+    margin: 0 0 15px 0;
+    padding: 12px;
+    background: rgba(245, 200, 66, 0.07);
+    border-radius: 10px;
+    border: 1px dashed rgba(245, 200, 66, 0.4);
+    flex-shrink: 0;
+}
+
+.destinatario p { margin: 5px 0; font-size: 14px; color: rgba(245, 200, 66, 0.9); font-style: italic; }
+@media (min-width: 768px) { .destinatario p { font-size: 16px; } }
+.destinatario strong { color: #f5c842; font-weight: bold; }
+
+/* ===================== */
+/*        TEXTO          */
+/* ===================== */
+#texto {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: justify;
+    position: relative;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border-left: 3px solid rgba(245, 200, 66, 0.5);
+    flex: 1;
+}
+
+@media (min-width: 768px) { #texto { font-size: 17px; padding: 20px; } }
+@media (min-width: 1024px) { #texto { font-size: 18px; padding: 25px; line-height: 2; } }
+
+#texto::before {
+    content: "\201C";
+    position: absolute;
+    top: -10px;
+    left: 5px;
+    font-size: 60px;
+    color: rgba(245, 200, 66, 0.15);
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+/* ===================== */
+/*       BOTONES         */
+/* ===================== */
+.botones {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 10;
+}
+
+.botones button {
+    background: linear-gradient(135deg, #8b0000, #c0392b);
+    border: 1px solid rgba(245, 200, 66, 0.2);
+    color: white;
+    padding: 14px 22px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 22px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4),
+                0 0 15px rgba(192, 57, 43, 0.3);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    isolation: isolate;
+}
+
+@media (min-width: 768px) { .botones button { padding: 15px 25px; font-size: 24px; } }
+@media (min-width: 1024px) {
+    .botones button { padding: 18px 30px; font-size: 28px; }
+    .botones button:hover { transform: translateY(-8px) scale(1.15); box-shadow: 0 15px 40px rgba(192, 57, 43, 0.6); }
+}
+
+.botones button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0; height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    z-index: -1;
+}
+
+.botones button:active::before { width: 300px; height: 300px; }
+.botones button:hover { transform: translateY(-5px) scale(1.1); box-shadow: 0 12px 30px rgba(192, 57, 43, 0.5); }
+.botones button:active { transform: translateY(-2px) scale(1.05); }
+
+/* ===================== */
+/*        MODAL          */
+/* ===================== */
+#modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9000;
+}
+
+#modal-contenido {
+    background: linear-gradient(to bottom, rgba(15, 10, 40, 0.98), rgba(5, 5, 20, 0.99));
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8),
+                0 0 40px rgba(245, 200, 66, 0.1);
+    border: 1px solid rgba(245, 200, 66, 0.3);
+    position: relative;
+}
+
+@media (min-width: 768px) { #modal-contenido { max-width: 400px; padding: 40px; } }
+@media (min-width: 1024px) { #modal-contenido { max-width: 500px; padding: 50px; } }
+
+@keyframes modalBounce {
+    0% { transform: scale(0.5) rotate(-5deg); opacity: 0; }
+    50% { transform: scale(1.1) rotate(2deg); }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes modalBounceOut {
+    0% { transform: scale(1) rotate(0deg); opacity: 1; }
+    100% { transform: scale(0.5) rotate(-5deg); opacity: 0; }
+}
+
+#modal-contenido::before {
+    content: "✨";
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+}
+
+#modal-texto {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+@media (min-width: 768px) { #modal-texto { font-size: 17px; line-height: 1.9; } }
+@media (min-width: 1024px) { #modal-texto { font-size: 19px; line-height: 2; } }
+
+#modal button {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #d4a017, #f5c842);
+    border: none;
+    color: #0a0a0a;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(245, 200, 66, 0.3);
+    transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) { #modal button { padding: 12px 30px; font-size: 16px; } }
+
+#modal button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(245, 200, 66, 0.5);
+}
+
+/* ===================== */
+/*      CORAZONES        */
+/* ===================== */
+.corazon {
+    position: fixed;
+    font-size: 24px;
+    animation: flotar 6s linear forwards;
+    pointer-events: none;
+    z-index: 50;
+}
+
+@keyframes flotar {
+    0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-700px) translateX(var(--random-x)) rotate(720deg); opacity: 0; }
+}
+
+/* ===================== */
+/*      SCROLLBAR        */
+/* ===================== */
+#carta::-webkit-scrollbar { width: 4px; }
+#carta::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); border-radius: 10px; }
+#carta::-webkit-scrollbar-thumb { background: rgba(245, 200, 66, 0.4); border-radius: 10px; }
+</style>
+
+</head>
+
+<body>
+
+<!-- LUNA -->
+
+<div id="luna"></div>
+
+<!-- NEBULOSAS -->
+
+<div class="nebulosa" style="width:400px;height:400px;background:#1a0a4a;top:-100px;left:-100px;"></div>
+<div class="nebulosa" style="width:300px;height:300px;background:#0a1a4a;bottom:50px;right:-50px;"></div>
+<div class="nebulosa" style="width:250px;height:250px;background:#2a0a2a;top:40%;left:30%;"></div>
+
+<!-- PANTALLA DE CONTRASEÑA -->
+
+<div id="pantalla-password">
+    <div id="caja-password">
+        <div id="candado"></div>
+        <h2>Solo para ti...</h2>
+        <p>Ingresa la contraseña preciosa 💕</p>
+        <input type="password" id="input-password" placeholder="••••••••" />
+        <div id="mensaje-error"></div>
+        <button onclick="verificarPassword()">Entrar</button>
+    </div>
+</div>
+
+<!-- SOBRE -->
+
+<div id="sobre" style="display:none;">
+    <div id="texto-sobre">Toca la carta 💌</div>
+</div>
+
+<!-- CARTA -->
+
+<div id="carta">
+    <h1>Feliz San Valentin</h1>
+    <div class="destinatario">
+        <p><strong>De:</strong> Estufita andante</p>
+        <p><strong>Para:</strong> Bebecita fiu fiu</p>
+    </div>
+    <div id="texto"></div>
+    <div class="botones">
+        <button onclick="mostrar('amo')"></button>
+        <button onclick="mostrar('gracias')">🌻</button>
+        <button onclick="mostrar('secreto')">🔒</button>
+    </div>
+</div>
+
+<!-- MODAL -->
+
+<div id="modal">
+    <div id="modal-contenido">
+        <p id="modal-texto"></p>
+        <button onclick="cerrar()">Cerrar</button>
+    </div>
+</div>
+
+<script>
+const sobre = document.getElementById("sobre");
+const carta = document.getElementById("carta");
+const texto = document.getElementById("texto");
+
+const mensaje =
+"No encuentro las palabras exactas para agradecerte por todo el amor que me has ofrecido preciosa🥰. Eres lo más hermoso del mundo; sin duda, yo ya gané por tener a una mujer tan increíble como lo es usted✨. Quiero que sepas que me encanta compartir mi vida contigo, todo a tu lado ha sido más bonito🫂🩹." +
+" Eres mi constante universal; en un mundo lleno de variables, tú eres lo único que no cambia🌌💗" +
+" Este detalle es solo una pequeña forma de decirte que te amo bebé, y que me importas muchísimo más de lo que imaginas ";
+
+let i = 0;
+
+// =====================
+// ESTRELLAS DE FONDO
+// =====================
+function crearEstrellas() {
+    const cantidad = window.innerWidth > 768 ? 180 : 120;
+    for (let j = 0; j < cantidad; j++) {
+        const e = document.createElement("div");
+        e.className = "estrella";
+        const size = Math.random() * 2.5 + 0.5;
+        e.style.width = size + "px";
+        e.style.height = size + "px";
+        e.style.left = Math.random() * 100 + "vw";
+        e.style.top = Math.random() * 100 + "vh";
+        e.style.setProperty("--dur", (2 + Math.random() * 4) + "s");
+        e.style.animationDelay = Math.random() * 4 + "s";
+        // Algunas estrellas doradas
+        if (Math.random() < 0.15) {
+            e.style.background = "#f5c842";
+            e.style.boxShadow = "0 0 4px rgba(245,200,66,0.8)";
+        } else {
+            e.style.boxShadow = "0 0 3px rgba(255,255,255,0.6)";
+        }
+        document.body.appendChild(e);
+    }
+}
+
+// =====================
+// ESTRELLAS FUGACES
+// =====================
+function lanzarFugaz() {
+    const f = document.createElement("div");
+    f.className = "fugaz";
+    f.style.left = (30 + Math.random() * 60) + "vw";
+    f.style.top = (Math.random() * 40) + "vh";
+    const dur = (1.5 + Math.random() * 2) + "s";
+    f.style.setProperty("--fdur", dur);
+    f.style.width = (80 + Math.random() * 100) + "px";
+    document.body.appendChild(f);
+    setTimeout(() => f.remove(), parseFloat(dur) * 1000 + 200);
+}
+
+crearEstrellas();
+
+// Estrellas fugaces periódicas
+setInterval(lanzarFugaz, 3000);
+setTimeout(lanzarFugaz, 800);
+
+// =====================
+// CONTRASEÑA
+// =====================
+const passwordCorrecta = "290397";
+
+function verificarPassword() {
+    const input = document.getElementById("input-password").value;
+    const error = document.getElementById("mensaje-error");
+    const caja = document.getElementById("caja-password");
+    const pantalla = document.getElementById("pantalla-password");
+
+    if (input === passwordCorrecta) {
+        error.innerText = "";
+        pantalla.style.animation = "desaparecer 0.8s ease forwards";
+        setTimeout(() => {
+            pantalla.style.display = "none";
+            sobre.style.display = "block";
+        }, 800);
+    } else {
+        error.innerText = "Contraseña incorrecta 🥺 inténtalo de nuevo";
+        caja.classList.remove("shake");
+        void caja.offsetWidth;
+        caja.classList.add("shake");
+        document.getElementById("input-password").value = "";
+    }
+}
+
+document.getElementById("input-password").addEventListener("keypress", (e) => {
+    if (e.key === "Enter") verificarPassword();
+});
+
+// =====================
+// SOBRE → CARTA
+// =====================
+sobre.addEventListener("click", () => {
+    sobre.style.animation = "none";
+    sobre.style.transform = "translate(-50%, -50%) scale(0) rotate(180deg)";
+    sobre.style.opacity = "0";
+
+    setTimeout(() => {
+        sobre.style.display = "none";
+        carta.style.display = "flex";
+        carta.classList.add("carta-animada");
+        escribir();
+        lluviaCorazones();
+    }, 700);
+});
+
+function escribir() {
+    if (i < mensaje.length) {
+        texto.innerHTML += mensaje.charAt(i);
+        i++;
+        setTimeout(escribir, 40);
+    }
+}
+
+// =====================
+// MODAL
+// =====================
+function mostrar(tipo) {
+    const textos = {
+        amo: "Amo tu forma de ser, tu risa, esos hermosos ojitos tuyos y la paz que siento cuando estoy contigo🩹",
+        gracias: "Gracias por quedarte, por apoyarme y por creer en mí incluso cuando yo dudo🥹",
+        secreto: "Prometo cuidarte, respetarte y elegirte todos los días mi cielo🌌"
+    };
+
+    const modal = document.getElementById("modal");
+    const modalContenido = document.getElementById("modal-contenido");
+
+    modalContenido.style.animation = 'none';
+    void modalContenido.offsetWidth;
+    modalContenido.style.animation = 'modalBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards';
+
+    document.getElementById("modal-texto").innerText = textos[tipo];
+    modal.style.display = "flex";
+}
+
+function cerrar() {
+    const modal = document.getElementById("modal");
+    const modalContenido = document.getElementById("modal-contenido");
+    modalContenido.style.animation = 'modalBounceOut 0.3s ease forwards';
+    setTimeout(() => { modal.style.display = "none"; }, 300);
+}
+
+// =====================
+// CORAZONES
+// =====================
+function lluviaCorazones() {
+    const intervalo = window.innerWidth > 768 ? 400 : 600;
+    setInterval(() => {
+        const c = document.createElement("div");
+        c.className = "corazon";
+        const items = ["🌼", "", "🌸", "💗", "🌙", "✨", "💫"];
+        c.innerText = items[Math.floor(Math.random() * items.length)];
+        c.style.left = Math.random() * window.innerWidth + "px";
+        c.style.bottom = "0px";
+        c.style.setProperty('--random-x', (Math.random() * 100 - 50) + 'px');
+        c.style.fontSize = (18 + Math.random() * 14) + "px";
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 6000);
+    }, intervalo);
+}
+</script>
+
+</body>
+</html>
